@@ -4,25 +4,21 @@
   [content]="content"
   [tuiTreeController]="true"
   [value]="item"
-
 />
 
-<ng-template
-  #content
-  let-item
->
-  <label
-    tuiLabel
-    class="tui-space_vertical-2 tui-space_left-1"
-  >
-    <input
-      size="s"
-      tuiCheckbox
-      type="checkbox"
-      [ngModel]="item | tuiMapper: getValue : map"
-      (ngModelChange)="onChecked(item, $event)"
-    />
-    <a routerLink="/lessons/{{item.id}}">{{ item.text }}</a>
-
-  </label>
-</ng-template>
+  <ng-template #content let-item>
+    <label
+      tuiLabel
+      class="tui-space_vertical-2 tui-space_left-1"
+    >
+<!--      <input-->
+<!--        size="s"-->
+<!--        tuiCheckbox-->
+<!--        type="checkbox"-->
+<!--        [ngModel]="item | tuiMapper: getValue : map"-->
+<!--        (ngModelChange)="onChecked(item, $event)"-->
+<!--        [disabled]=!item.isAvailable-->
+<!--      />-->
+      <a [class.isDisabled]=!item.isAvailable [class.isDone]=item.isDone routerLink="/lessons/{{ item.id }}">{{ item.text }}</a>
+    </label>
+  </ng-template>

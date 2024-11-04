@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Lesson} from '../lesson.model';
+import {Lesson} from '../lesson/lesson.model';
 import {ActivatedRoute, Data, Params} from '@angular/router';
 import {LessonDataService} from '../lesson.data-service';
 import {combineLatest, Subscription, switchAll, switchMap} from 'rxjs';
@@ -26,7 +26,6 @@ export class LessonDetailsComponent {
 
     ).subscribe(lesson => {
       this.lesson = lesson;
-      console.log(this.lesson)
     });
 
     // combineLatest(

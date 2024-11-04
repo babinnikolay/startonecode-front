@@ -1,0 +1,15 @@
+<div class="footer">
+  <div class="left">
+  </div>
+  <div class="buttons">
+    <button
+      iconStart="@tui.clock"
+      tuiButton
+      type="button"
+      [loading]="loading$ | async"
+      (click)="trigger$.next()"
+    >
+      Next
+    </button>
+  </div>
+</div>

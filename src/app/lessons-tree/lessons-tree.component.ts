@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {LessonDataService} from '../lesson.data-service';
 import {TuiCheckbox, TuiTree} from '@taiga-ui/kit';
-import {NgForOf} from '@angular/common';
+import {NgClass, NgForOf} from '@angular/common';
 import {TuiLabel} from '@taiga-ui/core';
 import {FormsModule} from '@angular/forms';
 import {EMPTY_ARRAY, TuiHandler, TuiMapperPipe} from '@taiga-ui/cdk';
@@ -11,6 +11,9 @@ interface TreeNode {
   readonly children?: readonly TreeNode[];
   readonly text: string;
   readonly id: number;
+  readonly isAvailable: boolean;
+  readonly isDone: boolean;
+
 }
 
 function flatten(item: TreeNode): readonly TreeNode[] {
@@ -29,7 +32,8 @@ function flatten(item: TreeNode): readonly TreeNode[] {
     TuiCheckbox,
     FormsModule,
     TuiMapperPipe,
-    RouterLink
+    RouterLink,
+    NgClass
   ],
   templateUrl: './lessons-tree.component.html',
   styleUrl: './lessons-tree.component.less'
@@ -41,39 +45,57 @@ export class LessonsTreeComponent {
   protected readonly data: TreeNode = {
     text: 'Topmost',
     id: -1,
+    isAvailable: true,
+    isDone: true,
     children: [
       {
         text: 'Chapter 1',
         id: 0,
+        isAvailable: true,
+        isDone: false,
         children: [
           {
             text: 'Lesson 1',
-            id: 1
+            id: 1,
+            isAvailable: true,
+            isDone: true
           },
           {
             text: 'Lesson 2',
-            id: 2
+            id: 2,
+            isAvailable: true,
+            isDone: false
           },
           {
             text: 'Lesson 3',
-            id: 3
+            id: 3,
+            isAvailable: false,
+            isDone: false
           },
         ],
       },
       {text: 'Chapter 2',
         id: 0,
+        isAvailable: true,
+        isDone: false,
         children: [
           {
             text: 'Lesson 4',
-            id: 4
+            id: 4,
+            isAvailable: false,
+            isDone: false
           },
           {
             text: 'Lesson 5',
-            id: 5
+            id: 5,
+            isAvailable: false,
+            isDone: false
           },
           {
             text: 'Lesson 6',
-            id: 6
+            id: 6,
+            isAvailable: false,
+            isDone: false
           },
         ]
       },
@@ -106,7 +128,6 @@ export class LessonsTreeComponent {
 
   protected onChecked(node: TreeNode, value: boolean): void {
     //flatten(node).forEach((item) => this.map.set(item, value));
-    console.log(node.text);
     //this.map = new Map(this.map.entries());
   }
 
