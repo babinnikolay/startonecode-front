@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <div class="container">
+    <div *ngIf="loginState === LoginState.AUTHORIZATION">
+      <form [formGroup]="loginForm" xmlns="http://www.w3.org/1999/html"
+            (ngSubmit)="onLogin()">
+        <div class="row">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+          />
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+          />
+          <div class="remember_wrapper">
+            <input
+              id="remember"
+              type="checkbox"
+              formControlName="remember"
+              class="checkbox"
+            />
+            <label for="remember" class="checkbox_label">Remember for 30 days</label>
+          </div>
+          <div class="buttons">
+            <button class="button button__primary" type="submit">Login</button>
+            <button class="button" (click)="onRegistration()">Registration</button>
+          </div>
+        </div>
+      </form>
+    </div>
+<!--    <app-logged-form *ngIf="loginState === LoginState.LOGGED"></app-logged-form>-->
+  </div>
+</div>

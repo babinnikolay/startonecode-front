@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="container">
+    <div>
+      <form [formGroup]="registrationForm" xmlns="http://www.w3.org/1999/html" (ngSubmit)="onRegister()">
+        <div class="row">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+          />
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+          />
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+          />
+          <div class="buttons">
+            <button class="button button__primary" type="submit">Register</button>
+            <button class="button" type="button" (click)="onCancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

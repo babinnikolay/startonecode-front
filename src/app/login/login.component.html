@@ -1,0 +1,2 @@
+<app-login-form *ngIf="state === LoginState.AUTHORIZATION || state === LoginState.LOGGED"></app-login-form>
+<app-registration-form *ngIf="state === LoginState.REGISTRATION"></app-registration-form>
